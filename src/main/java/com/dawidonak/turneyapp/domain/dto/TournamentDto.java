@@ -1,6 +1,5 @@
 package com.dawidonak.turneyapp.domain.dto;
 
-import com.dawidonak.turneyapp.domain.entity.Tournament;
 import lombok.Builder;
 import lombok.Data;
 
@@ -8,9 +7,9 @@ import java.util.Date;
 
 @Data
 @Builder
-public class TournamentDTO {
+public class TournamentDto {
     private Long tournamentId;
-    private String gamesystem;
+    private String gameSystem;
     private Date date;
     private String description;
 }

@@ -5,12 +5,11 @@ import lombok.Data;
 
 @Data
 @Builder
-public class ArmyDTO {
+public class ArmyDto {
 
     private Long armyId;
     private String armyUrl;
     private Long tournamentId;
-
-
+    private Long participantId;
 
 }

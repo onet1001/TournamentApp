@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class GameDTO {
+public class GameDto {
     private Long gameId;
     private Long tournamentId;
     private Long playerOneScore;
