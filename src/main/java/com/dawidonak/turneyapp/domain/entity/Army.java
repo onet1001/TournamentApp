@@ -26,14 +26,14 @@ public class Army {
     @JoinColumn(name = "tournament_id")
     private Tournament tournament;
 
-    // stara wersja
-//    @OneToOne(mappedBy="army")
-//    private Participant participant;
-
-    //nowa wersja
-    @OneToOne
-    @JoinColumn(name = "participant_id")
+    // wersja 1
+    @OneToOne(mappedBy = "army")
     private Participant participant;
+
+    //wersja 2
+//    @OneToOne
+//    @JoinColumn(name = "participant_id")
+//    private Participant participant;
 
 
 }

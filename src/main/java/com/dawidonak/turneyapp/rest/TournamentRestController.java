@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
+@RequestMapping("/api")
 public class TournamentRestController {
     private final TournamentService tournamentService;
 
@@ -15,15 +16,26 @@ public class TournamentRestController {
         this.tournamentService = tournamentService;
     }
 
-    @PostMapping("/addTournament")
-    public ResponseEntity<?> addTounrament(@RequestBody AddTournamentDto addTournamentDto){
+    @PostMapping("/add-tournament")
+    public ResponseEntity<?> addTournament(@RequestBody AddTournamentDto addTournamentDto){
         tournamentService.createTournament(addTournamentDto);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/showTournaments")
-    public ResponseEntity<?> showTounrament(){
+    @GetMapping("/show-tournaments")
+    public ResponseEntity<?> showTournament(){
         return new ResponseEntity<>(tournamentService.listAllTournaments(),HttpStatus.OK);
+    }
+
+    @GetMapping("/show-details")
+    public ResponseEntity<?> showTournamentDetails(@RequestParam Long tournamentId){
+        return new ResponseEntity<>(tournamentService.tournamentDetails(tournamentId),HttpStatus.OK);
+    }
+
+    @DeleteMapping("/deleteTournament")
+    public ResponseEntity<?> deleteTournament(@RequestParam Long tournamentId){
+        tournamentService.deleteTournament(tournamentId);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }

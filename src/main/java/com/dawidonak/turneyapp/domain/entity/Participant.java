@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -25,12 +24,19 @@ public class Participant {
     @JoinColumn(name="user_id")
     private User user;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="tournament_id")
     private Tournament tournament;
 
-    @OneToOne
+    //wersja 2
+//    @OneToOne(mappedBy = "participant")
+//    private Army army;
+
+    //Wersja 1
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "army_id")
     private Army army;
 
+    @Column(name = "participant_score")
+    private Long participantScore;
 }

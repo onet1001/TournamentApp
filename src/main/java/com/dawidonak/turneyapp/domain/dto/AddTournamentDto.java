@@ -9,6 +9,7 @@ import java.util.Date;
 @Builder
 public class AddTournamentDto {
     private String gameSystem;
+    private String tournamentName;
     private Date date;
     private String description;
 }

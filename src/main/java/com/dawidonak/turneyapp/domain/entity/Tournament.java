@@ -1,5 +1,6 @@
 package com.dawidonak.turneyapp.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,6 +24,9 @@ public class Tournament {
     private Long tournamentId;
 
     //zmienić na gamesystem id
+    @Column(name = "tournamentName")
+    private String tournamentName;
+
     @Column(name = "gamesystem")
     private String gameSystem;
 
@@ -32,10 +36,11 @@ public class Tournament {
     @Column(name = "description")
     private String description;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "tournament", cascade = CascadeType.PERSIST)
     private List<Army> armies;
 
-    //one to many?
-    @OneToOne(mappedBy="tournament")
-    private Participant participant;
+    @JsonIgnore
+    @OneToMany(mappedBy="tournament")
+    private List<Participant> participants;
 }
